@@ -27,21 +27,6 @@ public class TuringMachineTest {
 
     public static void main(String[] args) {
 
-        // Create the input tape
-//        Tape input = new Tape(new char[] {
-//            '*', '1', '0', '1', '0', '1', '0', '*'
-//        });
-//
-//        TuringMachinePresets.BitFlipper bitFlipper = new TuringMachinePresets.BitFlipper(input);
-//        bitFlipper.runPrint();
-
-//        Tape input = new Tape(new char[] {
-//            '*', '1', '1', '+', '1', '1', '1', '1', '=',
-//        });
-//
-//        TuringMachinePresets.UnaryAdder unaryAdder = new TuringMachinePresets.UnaryAdder(input);
-//        unaryAdder.runPrint();
-
         // Expansion test machine
 
         Tape input = new Tape(new char[] {
