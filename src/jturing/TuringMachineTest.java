@@ -27,51 +27,12 @@ public class TuringMachineTest {
 
     public static void main(String[] args) {
 
-        // Create the input tape
-//        Tape input = new Tape(new char[] {
-//            '*', '1', '0', '1', '0', '1', '0', '*'
-//        });
-//
-//        TuringMachinePresets.BitFlipper bitFlipper = new TuringMachinePresets.BitFlipper(input);
-//        bitFlipper.runPrint();
-
-//        Tape input = new Tape(new char[] {
-//            '*', '1', '1', '+', '1', '1', '1', '1', '=',
-//        });
-//
-//        TuringMachinePresets.UnaryAdder unaryAdder = new TuringMachinePresets.UnaryAdder(input);
-//        unaryAdder.runPrint();
-
-        // Expansion test machine
-
+        // Test of the Unary Adder machine
         Tape input = new Tape(new char[] {
-                '1', '0', '1', '1', '0', '2'
+                '*', '1', '1',  '+', '1', '1', '1', '1', '1', '='
         });
+        TuringMachinePresets.UnaryAdder unaryAdder = new TuringMachinePresets.UnaryAdder(input);
+        unaryAdder.runPrint();
 
-        State initial = new State("Initial");
-        State findTwo = new State("FindTwo");
-        State overwrite = new State("Overwrite");
-        State halt = new State("Halt");
-        State writeOneRight = new State("WriteOneRight ");
-
-        TuringMachine leftExpandTest = new TuringMachine(initial, input);
-
-        leftExpandTest.setInstructions(new Instruction[]{
-                new Instruction(initial, '1', findTwo, '1', HeadDirection.R, false),
-
-                new Instruction(findTwo, '0', findTwo, '0', HeadDirection.R, false),
-                new Instruction(findTwo, '1', findTwo, '1', HeadDirection.R, false),
-                new Instruction(findTwo, '2', overwrite, '2', HeadDirection.L, false),
-
-                new Instruction(overwrite, '1', overwrite, '2', HeadDirection.L, false),
-                new Instruction(overwrite, '0', overwrite, '2', HeadDirection.L, false),
-                new Instruction(overwrite, '-', writeOneRight, '2', HeadDirection.R, false),
-
-                new Instruction(writeOneRight, '2', writeOneRight, '2', HeadDirection.R, false),
-                new Instruction(writeOneRight, '-', halt, 'x', HeadDirection.C, true),
-
-        });
-
-        leftExpandTest.runPrint();
     }
 }

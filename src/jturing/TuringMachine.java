@@ -153,6 +153,20 @@ public class TuringMachine {
         history.add(tape.getValues());
     }
 
+    public void step() {
+        try {
+            executeInstruction(getInstruction(currentState, tape.getValue(currentPosition + displacementCounter)));
+        } catch (Instruction.InstructionNotFoundException e) {
+            e.printStackTrace();
+        }    }
+
+    public void stepBack() {
+        this.setTape(new Tape(getHistory().get(time)));
+        history.remove(history.size());
+        time--;
+    }
+
+
     // Loops through the tape executing the appropriate instructions until the machine halts
     public void run() {
         while (!halt) {
